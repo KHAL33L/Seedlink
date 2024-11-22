@@ -29,6 +29,8 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
+    padding: 20px 30px;
+    gap: 40px;
 }
 
 .nav-links li {
@@ -43,7 +45,7 @@ body {
 
 .nav-icons a {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
     margin-left: 15px;
     font-size: 16px;
 }
@@ -79,6 +81,7 @@ body {
     font-size: 20px;
     color: #888; /* Light gray text */
     margin-bottom: 10px;
+    margin-left: 100px;
 }
 
 .page-right h1 {
@@ -90,15 +93,103 @@ body {
 }
 
 .explore-btn {
-    background-color: #888;
+    background-color:rgb(133, 48, 126);
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
+    margin-left: 220px;
+    margin-top:110px
 }
 
 .explore-btn:hover {
     background-color: #aaa; /* Slightly lighter gray */
+}
+.footer {
+    background-color: #000; /* Footer background color */
+    color: white; /* Footer text color */
+    padding: 20px 0; /* Padding for space inside the footer */
+    text-align: center; /* Center-align text */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content horizontally */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.footer-links {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex; /* Display links inline */
+    gap: 15px; /* Space between links */
+}
+
+.footer-links a {
+    color: #aaa; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: white; /* Highlight on hover */
+}
+
+.seed-gallery {
+    padding: 50px 20px; /* Add padding around the section */
+    text-align: center;
+    background-color: #f9f9f9; /* Light background color for contrast */
+}
+
+.seed-gallery h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333; /* Adjust title color */
+}
+
+.seed-images {
+    display: flex; /* Arrange images side by side */
+    justify-content: center; /* Center the images */
+    flex-wrap: wrap; /* Wrap images if the screen is too narrow */
+    gap: 20px; /* Add space between images */
+}
+
+.seed-item {
+    flex: 1 1 calc(25% - 40px); /* Ensure images take up 25% of the row, minus gap space */
+    max-width: 900px; /* Optional: limit image width */
+    text-align: center;
+    background-color: #fff; /* Optional: background for each item */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for image item */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.seed-item img {
+    width: 100%; /* Make images responsive */
+    height : auto; /* Keep aspect ratio */
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.3s ease; /* Animation for hover effect */
+}
+
+.seed-item img:hover {
+    transform: scale(1.05); /* Slightly enlarge image on hover */
+}
+
+.seed-item p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.price {
+    font-size: 18px;
+    color: #27ae60; /* Green color for price */
+    font-weight: bold;
+    margin-top: 10px;
 }
