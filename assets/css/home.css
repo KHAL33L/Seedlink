@@ -1,0 +1,104 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Matches black background */
+    color: white;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000; /* Black background */
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.nav-icons a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+/* Hero Section */
+.image {
+    display: flex;
+    height: 100vh; /* Full screen height */
+    background-color: #000; /* Black background */
+}
+
+.image-left {
+    flex: 1;
+    overflow: hidden;
+}
+
+.image-left img {
+    width: 110%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 50px;
+}
+
+.page-right p {
+    font-size: 20px;
+    color: #888; /* Light gray text */
+    margin-bottom: 10px;
+}
+
+.page-right h1 {
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    margin-left:200px
+}
+
+.explore-btn {
+    background-color: #888;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.explore-btn:hover {
+    background-color: #aaa; /* Slightly lighter gray */
+}
