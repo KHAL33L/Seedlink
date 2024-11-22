@@ -1,0 +1,54 @@
+Homepage
+navigation bar {
+    -> logo
+
+
+    -> Home
+    -> Shop
+    -> About (
+        Contact is under the about page
+    )
+
+
+
+    -> Shopping cart
+    -> Profile (dynamically load if for members only)
+}
+
+Main welcome panel{
+    split vertically into 2.
+        left side(
+            Picture
+        )
+
+        Right side(
+            - Message
+            - Explore shop(button): takes you to shop
+        )
+}
+
+Offerings {
+    Load Most purchased items into grids from database
+
+    See more(button): Takes you to shop
+
+}
+
+
+Shop
+Two main panels 
+Left panel{
+    -> Seeds
+    -> Saplings
+
+    Filter by
+    -> Price (slider)
+}
+
+Right panel{
+    -> seeds card (default): loads when the seeds button is clicked
+    -> saplings card: loads when the saplings button is clicked.
+}
+
+
+About
