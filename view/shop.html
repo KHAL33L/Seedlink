@@ -3,9 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SeedLink | Shop</title>
+    <link rel="stylesheet" href="../assets/css/shop.css">
 </head>
 <body>
-    
+    <div class="container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+
+            <button id="seeds-btn" class="nav-btn">Seeds</button>
+            <button id="saplings-btn" class="nav-btn">Saplings</button>
+            <br>
+            <br>
+            <h2>Filter By</h2>
+            <input type="range" id="filter-slider" min="0" max="100" value="50">
+            <p>Value: <span id="sliderValue">50</span></p>
+            
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <!-- Seeds Card -->
+            <div id="seeds-card" class="product-card active">
+                <h2>Seeds</h2>
+                <div class="grid">
+                    <div class="item">
+                        <img src="../assets/images/saplin1.jpeg" alt="Seed 1">
+                        <p>Seed 1</p>
+                        <p>$10.00</p>
+                    </div>
+                    <div class="item">
+                        <img src="../assets/images/image.jpg" alt="Seed 2">
+                        <p>Seed 2</p>
+                        <p>$12.00</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="../assets/images/image.jpg" alt="Seed 2">
+                        <p>Seed 3</p>
+                        <p>$19.00</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="../assets/images/image.jpg" alt="Seed 2">
+                        <p>Seed 4</p>
+                        <p>$21.00</p>
+                    </div>
+                    <div class="item">
+                        <img src="../assets/images/image.jpg" alt="Seed 2">
+                        <p>Seed 2</p>
+                        <p>$12.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saplings Card -->
+            <div id="saplings-card" class="product-card">
+                <h2>Saplings</h2>
+                <div class="grid">
+                    <div class="item">
+                        <img src="https://via.placeholder.com/150" alt="Sapling 1">
+                        <p>Sapling 1</p>
+                        <p>$20.00</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://via.placeholder.com/150" alt="Sapling 2">
+                        <p>Sapling 2</p>
+                        <p>$25.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>SeedLink &copy; 2024 | Contact us: support@seedlink.com</p>
+    </footer>
+
+    <script src="../assets/js/shop.js"></script>
 </body>
 </html>
