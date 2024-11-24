@@ -11,14 +11,14 @@
         
         <!-- Signup card -->
         <div class="signup">
-            <form action="" id="signup_form">
+            <form action="../actions/signupUser.php" id="signup_form" method="post">
                 <h1>Sign Up</h1>
                 <p id="w_note">Join our community to gain Exclusive products and services</p>
 
                 <div class="input-box">
                     <ul>
                         <li><input type="text" placeholder="First Name" id="fname" name="fname" required> </li>
-                        <li><input type="text" id="lname" name="lname" placeholder="Last Name" required></li>
+                        <li><input type="text" placeholder="Last Name"  id="lname" name="lname" required></li>
                     </ul>
                 </div>
 
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="accept">
-                    <label><input type="checkbox"> Accept Terms & Conditions</label>
+                    <label><input type="checkbox" required> Accept Terms & Conditions</label>
                 </div>
 
                 <button type="submit" class="btn" id="signup_submit">SignUp</button>
@@ -45,7 +45,7 @@
             </form>
         </div>
 
-        <!-- <script src="../assets/js/signin.js"> </script> -->
+        <script src="../assets/js/signin.js"> </script>
     </body>
     </html>
 </html>

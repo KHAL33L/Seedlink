@@ -51,9 +51,9 @@ function signUpValidation() {
     const fname = document.getElementById("fname").value.trim();
     const lname = document.getElementById("lname").value.trim();
 
-    const email = document.getElementById("email").value.trim();
+    const email = document.getElementById("signup_email").value.trim();
 
-    const password = document.getElementById("password").value.trim();
+    const password = document.getElementById("signup_password").value.trim();
     const confirm_password = document.getElementById("confirm_password").value.trim();
     const error = document.getElementById("error");
     const acceptTerms = document.querySelector('.accept input[type="checkbox"]');
@@ -68,10 +68,7 @@ function signUpValidation() {
         error.innerHTML="The email format is wrong!!";
         return false;
     } 
-   if (confirm_password !== password) {
-        error.innerHTML = "Passwords do not match!!";
-        return false;
-    } if (!acceptTerms.checked) {
+    if (!acceptTerms.checked) {
         error.innerHTML = "You must accept the Terms & Conditions!";
         return false;
     }
@@ -80,7 +77,10 @@ function signUpValidation() {
         console.log("Password validation failed!!");
         error.innerHTML = "Password must contain at least 8 characters, one uppercase letter, three digits, and one special character!";
         return false;
-    } 
+    } if (confirm_password !== password) {
+        error.innerHTML = "Passwords do not match!!";
+        return false;
+    }
 
     //success
     error.style.color = "green";
