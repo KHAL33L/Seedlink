@@ -1,5 +1,5 @@
-<html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +7,8 @@
         <link rel="stylesheet" href="../assets/css/login.css">
         <link rel="icon" href="../assets/images/seedlink.ico" type="icon">
     </head>
-    <body>
-        
+
+    <body>  
         <!-- Signup card -->
         <div class="signup">
             <form action="../actions/signupUser.php" id="signup_form" method="post">
@@ -23,29 +23,29 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="text" name="email" id="signup_email" placeholder="E-mail">
+                    <input type="email" name="email" id="email" placeholder="E-mail">
                 </div>
                 <div class="input-box">
-                    <input type="password" name="password" id="signup_password" placeholder="Password">
+                    <input type="password" name="password" id="password" placeholder="Password">
                 </div>
                 <div class="input-box">
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
+                    <input type="password" name="confirm password" id="confirm password" placeholder="Confirm Password">
                 </div>
 
                 <div class="accept">
-                    <label><input type="checkbox" required> Accept Terms & Conditions</label>
+                    <label><input type="checkbox" id="acceptTerms"> Accept Terms & Conditions</label>
                 </div>
 
-                <button type="submit" class="btn" id="signup_submit">SignUp</button>
+                <button type="submit" class="btn" id="submit">SignUp</button>
 
                 <div class="register-link">
                     <p>Already Have an Account? <a href="./login.html" id="navToSignin">Sign In</a></p>
                 </div>
-                <div id="login_error" style="color: red;"></div>
+                <div id="error" style="color: red;"></div>
             </form>
+           
         </div>
 
-        <script src="../assets/js/signin.js"> </script>
+        <script src="../assets/js/signin.js"></script>
     </body>
-    </html>
 </html>
