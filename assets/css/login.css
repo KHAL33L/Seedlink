@@ -68,6 +68,19 @@ h1 {
     border: none;
 }
 
+.input-box ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    gap: 15px;
+    height: 100%;
+}
+
+.input-box input::placeholder{
+    color: #fff;
+
+}
+
 .forget-remember {
     display: flex;
     justify-content: space-between;
