@@ -3,22 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Seedlink | SignIn</title>
-        <link rel="stylesheet" href="../assets/css/login.css">
-        <link rel="icon" href="../assets/images/seedlink.ico" type="icon">
+        <title>Seedlink | login</title>
+        <link rel="stylesheet" href="/assets/css/login.css">
+        <link rel="icon" href="/assets/images/seedlink.ico" type="icon">
     </head>
     <body>
         
-        <!-- Signin card -->
-        <div class="signin">
-            <form action="../assets/js/signin.js" id="signin_form">
+        <!-- login card -->
+        <div class="login">
+            <form action="" id="login_form">
                 <h1>Log In</h1>
-                 <p id="w_note">Already a memeber? Sign In to access our services</p>
+                 <!-- <p id="w_note">Already a memeber? Sign In to access our services</p> -->
                 <div class="input-box">
-                    <input type="email" name="email" id="signin_email" placeholder="E-mail">
+                    <input type="email" name="email" id="login_email" placeholder="E-mail">
                 </div>
                 <div class="input-box">
-                    <input type="password" name="password" id="signin_password" placeholder="Password">
+                    <input type="password" name="password" id="login_password" placeholder="Password">
                 </div>
 
                 <div class="forget-remember">
@@ -26,7 +26,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
 
-                <button type="submit" class="btn" id="signin_submit"> LogIn </button>
+                <button type="submit" class="btn" id="login_submit"> LogIn </button>
 
                 <div class="register-link">
                     <p>Don't have an account?  <a href="./signup.html" id="navToSignup">Sign Up</a></p>
@@ -37,6 +37,36 @@
 
 
         <script src="../assets/js/signin.js"> </script>
+        <!-- Signup card -->
+        <div class="signup">
+            <form action="" id="signup_form">
+                <h1>Sign Up</h1>
+                <p id="w_note">Join our community to gain Exclusive products and services</p>
+
+                <div class="input-box">
+                    <input type="text" name="email" id="signup_email" placeholder="E-mail">
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" id="signup_password" placeholder="Password">
+                </div>
+                <div class="input-box">
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
+                </div>
+
+                <div class="accept">
+                    <label><input type="checkbox"> Accept Terms & Conditions</label>
+                </div>
+
+                <button type="submit" class="btn" id="signup_submit">SignUp</button>
+
+                <div class="register-link">
+                    <p>Already Have an Account? <button id="navTologin">Sign In</button></p>
+                </div>
+
+            </form>
+        </div>
+
+        <script src="/assets/js/login.js"> </script>
     </body>
     </html>
 </html>

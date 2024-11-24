@@ -15,14 +15,14 @@ body{
     background-position: center;
 }
 
-.signin{
+.login{
     position: relative;
     background-color: aquamarine;
     border: 2px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(15px);
     color: #000;
     width: 450px;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 30px 30px;
     /* display: flex; */
 }
@@ -33,7 +33,7 @@ body{
     backdrop-filter: blur(15px);
     color: #000;
     width: 450px;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 30px 40px;
     display: flex;
 }
@@ -62,7 +62,7 @@ h1 {
     color:black;
     width: 100%;
     height: 35px;
-    border-radius: 25px;
+    border-radius: 5px;
     text-align: center;
     font-size: 18px;
     border: none;
@@ -93,7 +93,7 @@ h1 {
     border: none;
     outline: none;
     background: #fff;
-    border-radius: 35px;
+    border-radius: 5px;
     font-size: 17px;
     font-weight: 600;
     color: #000;
@@ -108,14 +108,14 @@ h1 {
     text-align: left;
     padding-left: 20px;
 } 
-#navToSignup, #navToSignin{
+#navToSignup, #navTologin{
     text-decoration: none;
     color: black;
     background-color: transparent;
     font-size: 16px;
     border: none;
 }
-#navToSignup:hover, #navToSignin:hover{
+#navToSignup:hover, #navTologin:hover{
     font-size: 18px;
     text-decoration: underline;
     cursor: pointer;
