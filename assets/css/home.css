@@ -45,7 +45,7 @@ body {
 
 .nav-icons a {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
     margin-left: 15px;
     font-size: 16px;
 }

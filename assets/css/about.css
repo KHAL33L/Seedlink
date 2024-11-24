@@ -11,6 +11,45 @@ body {
     background-attachment: fixed;
 }
 
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000; /* Black background */
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 20px 30px;
+    gap: 40px;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.nav-icons a {
+    color: white;
+    text-decoration: underline;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
 .blur-container {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(50px);
