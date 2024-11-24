@@ -1,37 +1,44 @@
 
-// Switching from sign in to signup
+
+//Signin form validation
 if (document.getElementById("signin_form")) {
-    document.getElementById("navToSignup").addEventListener("click", function(event) {
-        //Displaying signup card and hiding signin card
-        document.querySelector(".signin").style.display="none";
-        document.querySelector(".signup").style.display="block";
-        // document.getElementsByClassName(".signin").style.display="none";
-        // document.getElementsByClassName(".signup").style.display="flex";
-        
+    document.getElementById("signin_form").addEventListener("submit", function(event) {
+        if (!signInValidation()) {
+            event.preventDefault();
+        }
+    });
+}
+
+//Signup form validation
+if (document.getElementById("signup_form")) {
+    document.getElementById("signup_form").addEventListener("submit", function(event) {
+        if (!signUpValidation()) {
+            event.preventDefault();
+        }
     });
 }
 
 
-if (document.getElementById("signup_form")){
-    document.getElementById("navToSignin").addEventListener("click", function(event) {
-        // Hiding signup card and displaying signin card
-        document.querySelector(".signup").style.display = "none";
-        document.querySelector(".signin").style.display = "flex";
-    //     document.getElementsByClassName(".signup").style.display = "none";
-    //     document.getElementsByClassName(".signin").style.display = "flex";//
-     });
+
+//Signin validation function
+function signInValidation(){
+    //variable declarations
+    const email = document.getElementById("login_mail").value.trim();
+    const password = document.getElementById("login_password").value.trim();
+    const error = document.getElementById("login_error");
+
+    if (!email || !password) {
+        error.innerHTML="Detected Empty fields!!";
+        console.log("False recorder");
+        return false;
+    } else if (!email_format.test(email)) {
+        error.innerHTML="The email format is wrong!!";
+        return false;
+    } else if (!password_regex.test(password)) {
+        error.innerHTML = "Password must contain at least 8 characters, one uppercase letter, three digits, and one special character!";
+        return false;
+    }
+    error.style.color="green";
+    error.innerHTML="Log In Successful!!";
+    return true;
 }
-
-
-// document.getElementById("navToSignup").addEventListener("click", function(event) {
-//     //Displaying signup card and hiding signin card
-//     document.querySelector(".signin").style.display="none";
-//     document.querySelector(".signup").style.display="flex";
-    
-// });
-
-// document.getElementById("navToSignin").addEventListener("click", function(event) {
-//     // Hiding signup card and displaying signin card
-//     document.querySelector(".signup").style.display = "none";
-//     document.querySelector(".signin").style.display = "flex";
-// });

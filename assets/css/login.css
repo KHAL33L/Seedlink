@@ -35,7 +35,7 @@ body{
     width: 450px;
     border-radius: 15px;
     padding: 30px 40px;
-    display: none;
+    display: flex;
 }
 form {
     width: 100%;
