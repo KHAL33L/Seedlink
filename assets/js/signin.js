@@ -1,5 +1,4 @@
 
-
 //Signin form validation
 if (document.getElementById("signin_form")) {
     document.getElementById("signin_form").addEventListener("submit", function(event) {
@@ -67,20 +66,20 @@ function signUpValidation() {
         error.innerHTML="Detected Empty fields!!";
         console.log("False recorder");
         return false;  
-    } if (!email_format.test(email)) {
+    } else if (!email_format.test(email)) {
         error.innerHTML="The email format is wrong!!";
         return false;
     } 
-    if (!acceptTerms.checked) {
+    else if (!acceptTerms.checked) {
         error.innerHTML = "You must accept the Terms & Conditions!";
         return false;
     }
-    if (!password_regex.test(password)) {
+    else if (!password_regex.test(password)) {
         console.log(password)
         console.log("Password validation failed!!");
         error.innerHTML = "Password must contain at least 8 characters, one uppercase letter, three digits, and one special character!";
         return false;
-    } if (confirm_password !== password) {
+    } else if (password !== confirm_password) {
         error.innerHTML = "Passwords do not match!!";
         return false;
     }
@@ -90,5 +89,4 @@ function signUpValidation() {
     error.innerHTML="Signup Successful!!";
     console.log("Validation passed: signup successful")
     return true;
-
 }
