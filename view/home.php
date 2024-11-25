@@ -10,19 +10,33 @@
 </head>
 
 <body>
+
+<?php
+session_start();
+
+// Check if the user is logged in
+$isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your session key
+?>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">Seedlink</div>
         <ul class="nav-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="shop.php">Shop</a></li>
+            <li><a href="about.php">About</a></li>
     
         </ul>
         <div class="nav-icons">
+            <ul>
             <a href="#cart">🛒+</a>
-            <a href="profile.html">Profile</a>
-            <a href="signup.html">Sign Up/Login</a>
+            <?php if ($isLoggedIn): ?>
+                    <a href="profile.php">Profile</a>
+                    <a href="../actions/logoutUser.php">Logout</a>
+            <?php else: ?>
+                <a href="login.html">Login</a>
+            <?php endif; ?>
+            </ul>
+            <!-- <a href="profile.html">Profile</a> -->
         </div>
     </nav>
 

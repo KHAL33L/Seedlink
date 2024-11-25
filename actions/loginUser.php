@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['lname'] = $user['lname'];
             $_SESSION['email'] = $user['email'];
 
-            header("Location: ../view/home.html");
+            header("Location: ../view/shop.php");
         } else {
             echo "Invalid password.";
         }

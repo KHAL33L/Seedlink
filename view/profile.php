@@ -12,13 +12,13 @@
     <nav class="navbar">
         <div class="logo">Seedlink</div>
         <ul class="nav-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="shop.php">Shop</a></li>
+            <li><a href="about.php">About</a></li>
         </ul>
         <div class="nav-icons">
             <a href="#cart">🛒+</a>
-            <a href="profile.html">Profile</a>
+            <a href="profile.php">Profile</a>
         </div>
     </nav>
 
@@ -37,6 +37,7 @@
             <div class="products-overview">
                 <p><strong>Total Products:</strong> <span id="total-products">5</span></p>
                 <button id="add-product-btn" class="add-product-btn">Add New Product</button>
+                <a href="../actions/logoutUser.php"><button id="add-product-btn" class="add-product-btn">Log Out</button></a>
             </div>
         </div>
 
@@ -75,7 +76,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2>Add New Product</h2>
-            <form id="add-product-form">
+            <form id="add-product-form" action="../actions/uploadProduct.php" method="post" enctype="multipart/form-data">
                 <label for="product-image">Product Image</label>
                 <input type="file" id="product-image" name="product-image" required>
 
@@ -110,13 +111,13 @@
         }
 
         // Handle form submission for adding products
-        document.getElementById('add-product-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Normally here you'd send the form data to the server via AJAX (or PHP).
-            alert('Product added successfully!');
-            closeModal();
-            // Optionally, update the products table dynamically here.
-        });
+        // document.getElementById('add-product-form').addEventListener('submit', function(event) {
+        //     event.preventDefault();
+        //     // Normally here you'd send the form data to the server via AJAX (or PHP).
+        //     alert('Product added successfully!');
+        //     closeModal();
+        //     // Optionally, update the products table dynamically here.
+        // });
 
         // Function to view product details
         function viewProduct(productId) {
