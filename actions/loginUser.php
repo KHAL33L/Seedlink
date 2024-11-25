@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['fname'] = $user['fname'];
             $_SESSION['lname'] = $user['lname'];
-            $_SESSION['is_seller'] = $user['is_seller'];
+            $_SESSION['email'] = $user['email'];
 
             header("Location: ../view/home.html");
         } else {
