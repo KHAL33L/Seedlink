@@ -90,3 +90,18 @@ function signUpValidation() {
     console.log("Validation passed: signup successful")
     return true;
 }
+function visiblePassword(){
+    const password1 = document.getElementById("password");
+    const password2 = document.getElementById("confirm_password");
+    const showPass = document.getElementById("showPassword");
+
+    if (showPass.checked) {
+        password1.type = "text";
+        password2.type = "text";
+
+    }else{
+        password1.type = "password";
+        password2.type="password";
+    }
+    
+}
