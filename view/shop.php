@@ -30,7 +30,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
                     <a href="profile.php">Profile</a>
                     <a href="../actions/logoutUser.php">Logout</a>
             <?php else: ?>
-                <a href="login.html">Login</a>
+                <a href="login.php">Login</a>
             <?php endif; ?>
             </ul>
             <!-- <a href="profile.html">Profile</a> -->

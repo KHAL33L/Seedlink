@@ -32,7 +32,7 @@ try {
         // Execute the query
         if ($stmt->execute()) {
             // Redirect to the login page after successful insertion
-            header("Location: ../view/login.html");
+            header("Location: ../view/login.php");
             exit();
         } else {
             echo "Error: Could not execute the query.";
