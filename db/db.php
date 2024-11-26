@@ -2,8 +2,8 @@
 class Database {
     private $host = "localhost";
     private $db_name = "webtech_fall2024_ibrahim_dasuki";
-    private $username = "ibrahim.dasuki";
-    private $password = "Delorean12!";
+    private $username = "reindorf.narh";
+    private $password = "(Qw123ty_)";
     private $charset = "utf8mb4";
 
     function getDatabaseConnection() {
