@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="../assets/css/cart.css">
 </head>
 <body>
+
+<?php
+session_start();
+
+// Check if the user is logged in
+$isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your session key
+?>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">Seedlink</div>
