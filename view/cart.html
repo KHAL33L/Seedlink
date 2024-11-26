@@ -9,14 +9,28 @@
 
 <body>
     <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="logo">Seed & Sapling</div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Seedlink</div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="cart.html" style="color: #4CAF50;">Cart</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="shop.php">Shop</a></li>
+            <li><a href="about.php">About</a></li>
+    
         </ul>
-    </div>
+        <div class="nav-icons">
+            <ul>
+            <a href="#cart">🛒+</a>
+            <?php if ($isLoggedIn): ?>
+                    <a href="profile.php">Profile</a>
+                    <a href="../actions/logoutUser.php">Logout</a>
+            <?php else: ?>
+                <a href="login.html">Login</a>
+            <?php endif; ?>
+            </ul>
+            <!-- <a href="profile.html">Profile</a> -->
+        </div>
+    </nav>
 
     <!-- Cart Container -->
     <div class="profile-page">
@@ -70,11 +84,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 Seed & Sapling. All rights reserved.</p>
+            <p>&copy; 2024 Seedlink. All rights reserved.</p>
             <ul class="footer-links">
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Support</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="about.php">Contact Us</a></li>
             </ul>
         </div>
     </footer>
