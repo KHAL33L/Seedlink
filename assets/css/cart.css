@@ -1,9 +1,9 @@
 /* General Styles */
 html, body {
-    height: 100%;
+    height: 100%; /* Ensure the height is 100% of the viewport */
     margin: 0;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column; /* Stack elements vertically */
 }
 
 body {
@@ -45,12 +45,12 @@ body {
 }
 
 .nav-links a:hover {
-    color: #4CAF50;
+    color: #4CAF50; /* Highlight the link on hover */
 }
 
 /* Content Wrapper */
 .profile-page {
-    flex: 1; 
+    flex: 1; /* Make the main content take up all available space */
     max-width: 1200px;
     margin: auto;
     padding: 20px;
