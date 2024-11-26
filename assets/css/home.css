@@ -105,6 +105,11 @@ body {
     margin-top:110px
 }
 
+.explore-btn a{
+    text-decoration: none;
+    color: #fff;
+}
+
 .explore-btn:hover {
     background-color: #aaa; /* Slightly lighter gray */
 }
