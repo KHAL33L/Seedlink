@@ -1,0 +1,177 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2b2b2b;
+    color: white;
+}
+
+/* Navigation Bar */
+.navbar {
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+}
+
+.navbar .logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 20px 30px;
+    gap: 40px;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #4CAF50;
+}
+
+/* Content Wrapper */
+.profile-page {
+    flex: 1; 
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.profile-container {
+    text-align: center;
+    background-color: #333;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.profile-container h1 {
+    font-size: 32px;
+}
+
+.products-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.products-container h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+/* Cart Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #555;
+    font-size: 18px;
+}
+
+th {
+    background-color: #444;
+    color: white;
+}
+
+td {
+    background-color: #2b2b2b;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #444;
+}
+
+tr:hover {
+    background-color: #555;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.remove-btn {
+    background-color: #f44336;
+}
+
+.remove-btn:hover {
+    background-color: #e53935;
+}
+
+.submit-btn {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Footer */
+.footer {
+    background-color: #000;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
