@@ -13,24 +13,20 @@
         <div class="login">
             <form action="../actions/loginUser.php" id="login_form" method="post">
                 <h1>Log In</h1>
-                 <!-- <p id="w_note">Already a member? Sign In to access our services</p> -->
                 <div class="input-box">
                     <input type="email" name="email" id="login_email" placeholder="E-mail">
                 </div>
                 <div class="input-box">
                     <input type="password" name="password" id="login_password" placeholder="Password">
                 </div>
-
                 <div>
                     <input type="checkbox" id="login_showPassword" onclick="showLoginPass()">Show Password
                 </div>
 
-                
-
                 <button type="submit" class="btn" id="submit"> LogIn </button>
 
                 <div class="register-link">
-                    <p>Don't have an account?  <a href="./signup.html" id="navToSignup">Sign Up</a></p>
+                    <p>Don't have an account?<a href="./signup.html" id="navToSignup"> Sign Up</a></p>
                 </div>
                 <div id="login_error" style="color: red;"></div>
                 <div class="forget-remember">
