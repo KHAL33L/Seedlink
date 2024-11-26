@@ -23,7 +23,7 @@ $email = $_SESSION["email"];
             <li><a href="about.php">About</a></li>
         </ul>
         <div class="nav-icons">
-            <a href="#cart">🛒+</a>
+            <a href="cart.html">🛒+</a>
             <a href="profile.php">Profile</a>
         </div>
     </nav>
