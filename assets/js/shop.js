@@ -1,5 +1,17 @@
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    const productGrid = document.getElementById("productGridSaplings");
+    //Panel and card control
+    const seedsBtn = document.getElementById("seeds-btn");
+    const saplingsBtn = document.getElementById("saplings-btn");
+    const seedsCard = document.getElementById("seeds-card");
+    const saplingsCard = document.getElementById("saplings-card");
+    const slider = document.getElementById("filter-slider");
+    const sliderValue = document.getElementById("sliderValue");
+
+    //Products control
+    const productGrid = document.getElementById("productGrid");
     const productModal = document.getElementById("productModal");
     const closeModal = document.getElementById("closeModal");
 
@@ -11,10 +23,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentProductId = null;
 
-    // Fetch products by category (saplings)
-    const fetchSaplings = async () => {
+
+        // Slider value display
+    slider.addEventListener("input", () => {
+        sliderValue.textContent = slider.value;
+    });
+    
+        // Show Seeds Card
+        seedsBtn.addEventListener("click", () => {
+            seedsCard.classList.add("active");
+            saplingsCard.classList.remove("active");
+        });
+    
+        // Show Saplings Card
+        saplingsBtn.addEventListener("click", () => {
+            saplingsCard.classList.add("active");
+            seedsCard.classList.remove("active");
+        });
+
+    // Fetch products by category
+    const fetchProducts = async () => {
         try {
-            const response = await fetch("../actions/get_products_by_category.php?category=sapling");
+            const response = await fetch("../actions/getproducts_seeds.php?category=seed");
             const products = await response.json();
 
             if (products.error) {
@@ -22,14 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            displaySaplings(products);
+            displayProducts(products);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
     };
 
-    // Display saplings in cards
-    const displaySaplings = (products) => {
+    // Display products in cards
+    const displayProducts = (products) => {
         productGrid.innerHTML = ""; // Clear the grid
 
         products.forEach((product) => {
@@ -38,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
             productCard.innerHTML = `
                 <img src="${product.image_url}" alt="${product.name}" class="product-image">
                 <h3>${product.name}</h3>
-                <p>$${product.price}</p>
+                <p>GH₵${product.price}</p>
                 <button class="add-to-cart-btn" data-product-id="${product.product_id}">Add to Cart</button>
             `;
 
@@ -72,6 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Logic to add product to cart can go here
     });
 
-    // Fetch and display saplings on page load
-    fetchSaplings();
+    // Fetch and display products on page load
+    fetchProducts();
+
+    
 });

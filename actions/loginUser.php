@@ -5,29 +5,24 @@ include "../db/db.php";
 // Start session for user tracking
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+try {
     // Get database connection
     $database = new Database();
-    $conn = $database->getConnection();
+    $conn = $database->getDatabaseConnection();
 
     // Sanitize user inputs
-    $email = $conn->real_escape_string($_POST['email']);
+    $email = $conn->$_POST['email'];
     $password = $_POST['password']; // Do not hash here; it’s hashed in the database
 
     // Query to check if the user exists
     $stmt = $conn->prepare("SELECT user_id, fname, lname, password, is_seller FROM users WHERE email = ?");
-    if ($stmt === false) {
-        die("Prepare failed: " . $conn->error);
-    }
-
-    $stmt->bind_param("s", $email);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
-    $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
-        // Fetch user data
-        $user = $result->fetch_assoc();
+    // Fetch results
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    if ($user) {
         // Verify password
         if (password_verify($password, $user['password'])) {
             // Store user data in the session
@@ -44,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "No user found with that email.";
     }
 
-    // Close statement and connection
-    $stmt->close();
-    $conn->close();
+} catch (PDOException $e) {
+    die("Database error: " . $e->getMessage());
 }
+
 ?>
