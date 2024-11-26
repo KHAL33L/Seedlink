@@ -43,7 +43,7 @@
 
         <!-- Product Table -->
         <div class="products-table-container">
-            <table id="products-table">
+            <table id="productTable">
                 <thead>
                     <tr>
                         <th style="width: 35%;">Product Name</th>
@@ -53,18 +53,7 @@
                     </tr>
                 </thead>
                 
-                <tbody id="products-list">
-                    <!-- Example of a product entry -->
-                    <tr>
-                        <td>Tomato Sapling</td>
-                        <td>Sapling</td>
-                        <td>$10</td>
-                        <td>
-                            <button class="view-btn" onclick="viewProduct(1)">View</button>
-                            <button class="edit-btn" onclick="editProduct(1)">Edit</button>
-                            <button class="delete-btn" onclick="deleteProduct(1)">Delete</button>
-                        </td>
-                    </tr>
+                <tbody>
                     <!-- More products will be dynamically added here -->
                 </tbody>
             </table>
@@ -100,42 +89,19 @@
         </div>
     </div>
 
-    <script>
-        // Open and close modal for adding products
-        document.getElementById('add-product-btn').addEventListener('click', function() {
-            document.getElementById('add-product-modal').style.display = 'block';
-        });
+        <!-- View Product Modal -->
+    <div id="viewModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="closeViewModal" class="close">&times;</span>
+            <h2 id="viewProductName"></h2>
+            <img id="viewProductImage" alt="Product Image">
+            <p id="viewProductDescription"></p>
+            <p><strong>Category:</strong> <span id="viewProductCategory"></span></p>
+            <p><strong>Price:</strong> $<span id="viewProductPrice"></span></p>
+        </div>
+    </div>
 
-        function closeModal() {
-            document.getElementById('add-product-modal').style.display = 'none';
-        }
-
-        // Handle form submission for adding products
-        // document.getElementById('add-product-form').addEventListener('submit', function(event) {
-        //     event.preventDefault();
-        //     // Normally here you'd send the form data to the server via AJAX (or PHP).
-        //     alert('Product added successfully!');
-        //     closeModal();
-        //     // Optionally, update the products table dynamically here.
-        // });
-
-        // Function to view product details
-        function viewProduct(productId) {
-            alert('Viewing details for product ID: ' + productId);
-        }
-
-        // Function to edit product details
-        function editProduct(productId) {
-            alert('Editing product ID: ' + productId);
-        }
-
-        // Function to delete product
-        function deleteProduct(productId) {
-            if (confirm('Are you sure you want to delete this product?')) {
-                alert('Product ID ' + productId + ' deleted.');
-                // You would also remove the product from the table or update the database here.
-            }
-        }
+    <script src="../assets/js/profile.js">
     </script>
 
     <footer class="footer">

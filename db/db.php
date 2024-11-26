@@ -18,7 +18,7 @@ class Database {
             
         }
         else{
-            echo "Connection successfull!!";
+            // echo "Connection successfull!!";
         }
 
         return $this->conn;

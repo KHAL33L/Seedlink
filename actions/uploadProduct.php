@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST['product-price'];
 
     // File upload handling
-    $targetDir = __DIR__. "../uploads/products/";
+    $targetDir = __DIR__. "/../uploads/products/";
     $fileName = basename($_FILES["product-image"]["name"]);
     $targetFilePath = $targetDir . $fileName;
     $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($stmt->execute()) {
             echo "Product added successfully!";
-            header("Location: marketplace.php"); // Redirect to marketplace or another page
+            header("Location: ../view/profile.php"); // Redirect to marketplace or another page
             exit();
         } else {
             echo "Failed to add product: " . $stmt->error;
