@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeViewModal = document.getElementById("closeViewModal");
 
     const fetchProducts = async () => {
-        const response = await fetch("../../actions/getproducts.php");
+        const response = await fetch("../actions/getproducts.php");
         const products = await response.json();
 
         if (products.error) {
@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>GH₵${product.price}</td>
                 <td>
                     <button class="view-btn" data-product='${JSON.stringify(product)}'>View</button>
-                    <button class="edit-btn" data-product-id="${product.product_id}">Edit</button>
                     <button class="delete-btn" data-product-id="${product.product_id}">Delete</button>
                 </td>
             `;
