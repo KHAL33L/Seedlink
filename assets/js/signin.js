@@ -90,10 +90,11 @@ function signUpValidation() {
     console.log("Validation passed: signup successful")
     return true;
 }
-function visiblePassword(){
+function showSignupPass(){
     const password1 = document.getElementById("password");
     const password2 = document.getElementById("confirm_password");
     const showPass = document.getElementById("showPassword");
+    
 
     if (showPass.checked) {
         password1.type = "text";
@@ -104,4 +105,17 @@ function visiblePassword(){
         password2.type="password";
     }
     
+}
+
+function showLoginPass(){
+    const loginPass = document.getElementById("login_password");
+    const login_showpass = document.getElementById("login_showPassword");
+
+    if (login_showpass.checked) {
+        loginPass.type = "text";
+
+    }else{
+        loginPass.type = "password";
+    }
+
 }
