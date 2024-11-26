@@ -33,7 +33,6 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
                 <a href="login.php">Login</a>
             <?php endif; ?>
             </ul>
-            <!-- <a href="profile.html">Profile</a> -->
         </div>
     </nav>
 
@@ -46,7 +45,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
             <br>
             <br>
             <h2>Filter By</h2>
-            <input type="range" id="filter-slider" min="0" max="1000" value="50" step="5">
+            <input type="range" id="filter-slider" min="0" max="1000" value="300" step="5">
             <p>Price GH₵: <span id="sliderValue">50</span></p>
             
         </div>

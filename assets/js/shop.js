@@ -58,6 +58,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+        // Fetching and displaying products based on slider price selector
+    const fetchFilteredProducts = async (maxPrice) => {
+        try {
+            const response = await fetch("../actions/filter_products.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `maxPrice=${maxPrice}`,
+            });
+    
+            const products = await response.json();
+    
+            if (products.error) {
+                console.error(products.error);
+                productGrid.innerHTML = "<p>Error fetching products.</p>";
+                return;
+            }
+    
+            displayProducts(products);
+            } catch (error) {
+                console.error("Error:", error);
+                productGrid.innerHTML = "<p>Error fetching products.</p>";
+            }
+        };
+
+
+
     // Display products in cards
     const displayProducts = (products) => {
         productGrid.innerHTML = ""; // Clear the grid
