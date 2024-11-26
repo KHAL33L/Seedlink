@@ -49,7 +49,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
         <div class="page-right">
             <p>Connecting Farmers Through Innovation and Unity</p>
            <span> <h1>Grow <br> Together</h1></span>
-            <button class="explore-btn">See More</button>
+            <button class="explore-btn"><a href="shop.php">See More</a></button>
         </div>
     </section>
         <section class="seed-gallery">
