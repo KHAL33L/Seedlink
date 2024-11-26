@@ -71,15 +71,9 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
 
             <div id="saplings-card" class="product-right">
                 <h1>Sapling Products</h1>
-                <!-- <div class="product-grid" id="productGrid">
-                    Products will be dynamically loaded here 
-                </div> -->
-                <div class="product-card">
-                <img src="/Applications/XAMPP/xamppfiles/htdocs/seedlink/actions/../uploads/products/dragonfruit.jpeg" alt="Dragon Fruit Seeds" class="product-image">
-                <h3>Dragon Fruit Seeds</h3>
-                <p>GH₵540.00</p>
-                <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
-            </div>
+                <div class="product-grid" id="productGridSaplings">
+                    <!-- Saplings will be dynamically loaded here -->
+                </div>
             </div>
 
 
@@ -104,5 +98,6 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
     </footer>
 
     <script src="../assets/js/shop.js"></script>
+    <script src="../assets/js/shop_sapling.js"></script>
 </body>
 </html>
