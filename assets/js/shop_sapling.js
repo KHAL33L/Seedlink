@@ -7,9 +7,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalProductName = document.getElementById("modalProductName");
     const modalProductDescription = document.getElementById("modalProductDescription");
     const modalProductPrice = document.getElementById("modalProductPrice");
+    const modalProductQuantity = document.getElementById("productQuantity");
     const modalAddToCart = document.getElementById("modalAddToCart");
 
-    let currentProductId = null;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let currentProduct = null; // Store the current product for the modal
+
+    // Show product modal with quantity selector
+    const showModal = (product) => {
+        currentProduct = product;
+        modalProductImage.src = product.image_url;
+        modalProductName.textContent = product.name;
+        modalProductDescription.textContent = product.description || "No description available.";
+        modalProductPrice.textContent = product.price;
+        modalProductQuantity.value = 1; // Reset quantity to 1
+        document.getElementById("productModal").style.display = "block";
+    };
+
+    // Add product to the cart with quantity
+    modalAddToCart.addEventListener("click", () => {
+        const quantity = parseInt(modalProductQuantity.value);
+
+        // Check if product already exists in the cart
+        const existingProductIndex = cart.findIndex((item) => item.product_id === currentProduct.product_id);
+        if (existingProductIndex > -1) {
+            // Update quantity if product exists
+            cart[existingProductIndex].quantity += quantity;
+        } else {
+            // Add new product to the cart
+            cart.push({
+                product_id: currentProduct.product_id,
+                name: currentProduct.name,
+                price: currentProduct.price,
+                quantity: quantity,
+                image_url: currentProduct.image_url,
+            });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart)); // Save cart to localStorage
+        alert(`${currentProduct.name} added to cart!`);
+        document.getElementById("productModal").style.display = "none"; // Close modal
+    });
 
     // Fetch products by category (saplings)
     const fetchSaplings = async () => {
@@ -52,14 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Show modal with product details
-    const showModal = (product) => {
-        modalProductImage.src = product.image_url;
-        modalProductName.textContent = product.name;
-        modalProductDescription.textContent = product.description || "No description available.";
-        modalProductPrice.textContent = product.price;
-        productModal.style.display = "block";
-    };
 
     // Close modal
     closeModal.addEventListener("click", () => {

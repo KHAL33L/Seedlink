@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST['product-price'];
 
     // File upload handling
-    $targetDir = __DIR__. "/../uploads/products/";
+    $targetDir = "../uploads/products";
     $fileName = basename($_FILES["product-image"]["name"]);
     $targetFilePath = $targetDir . $fileName;
     $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));

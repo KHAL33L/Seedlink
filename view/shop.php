@@ -25,12 +25,12 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
         </ul>
         <div class="nav-icons">
             <ul>
-            <a href="#cart">🛒+</a>
+            <a href="cart.html">🛒+</a>
             <?php if ($isLoggedIn): ?>
                     <a href="profile.php">Profile</a>
                     <a href="../actions/logoutUser.php">Logout</a>
             <?php else: ?>
-                <a href="login.html">Login</a>
+                <a href="login.php">Login</a>
             <?php endif; ?>
             </ul>
             <!-- <a href="profile.html">Profile</a> -->
@@ -85,6 +85,8 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
                     <h2 id="modalProductName"></h2>
                     <p id="modalProductDescription"></p>
                     <p><strong>Price:</strong> $<span id="modalProductPrice"></span></p>
+                    <label for="productQuantity">Quantity:</label>
+                    <input type="number" id="productQuantity" min="1" value="1">
                     <button id="modalAddToCart">Add to Cart</button>
                 </div>
              </div>

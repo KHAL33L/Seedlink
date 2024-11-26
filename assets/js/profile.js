@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeViewModal = document.getElementById("closeViewModal");
 
     const fetchProducts = async () => {
-        const response = await fetch("../actions/get_user_products.php");
+        const response = await fetch("../../actions/getproducts.php");
         const products = await response.json();
 
         if (products.error) {

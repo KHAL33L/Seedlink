@@ -6,6 +6,7 @@ class Database {
     private $password = "";
     public $conn;
 
+
     public function getConnection() {
         $this->conn = null;
 
@@ -24,4 +25,9 @@ class Database {
         return $this->conn;
     }
 }
+
+
+
 ?>
+
+
