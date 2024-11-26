@@ -22,7 +22,6 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
             <li><a href="home.php">Home</a></li>
             <li><a href="shop.php">Shop</a></li>
             <li><a href="about.php">About</a></li>
-    
         </ul>
         <div class="nav-icons">
             <ul>
