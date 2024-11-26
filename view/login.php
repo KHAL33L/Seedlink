@@ -26,7 +26,7 @@
                 <button type="submit" class="btn" id="submit"> LogIn </button>
 
                 <div class="register-link">
-                    <p>Don't have an account?<a href="./signup.html" id="navToSignup"> Sign Up</a></p>
+                    <p>Don't have an account?<a href="./signup.php" id="navToSignup"> Sign Up</a></p>
                 </div>
                 <div id="login_error" style="color: red;"></div>
                 <div class="forget-remember">

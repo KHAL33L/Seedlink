@@ -17,7 +17,7 @@
         </ul>
         <div class="nav-icons">
             <ul>
-                <a href="#cart">🛒+</a>
+                <a href="cart.php">🛒+</a>
                 <?php if ($isLoggedIn): ?>
                     <a href="profile.php">Profile</a>
                     <a href="../actions/logoutUser.php">Logout</a>
