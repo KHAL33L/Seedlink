@@ -32,7 +32,7 @@
     <div class="profile-page">
         <div class="profile-container">
             <h1>Your Cart</h1>
-            <p>Review your items before clearing your cart.</p>
+            <p>Review your items before completing your order.</p>
         </div>
         <div class="products-container">
             <table>
@@ -79,7 +79,8 @@
             <h2>Cart Summary</h2>
             <p>Total Items: 3</p>
             <p>Total Cost: $25.00</p>
-            <button class="submit-btn" onclick="clearCart()">Clear Cart</button>
+            <!-- Changed "Clear Cart" to "Order Complete" -->
+            <button class="submit-btn" onclick="completeOrder()">Order Complete</button>
         </div>
     </div>
 
@@ -95,14 +96,39 @@
         </div>
     </footer>
 
-    <!-- JavaScript to Clear Cart -->
+    <!-- JavaScript for Completing the Order -->
     <script>
-        function clearCart() {
-            if (confirm("Are you sure you want to clear your cart?")) {
-                // Example action: Clear cart via server or frontend
-                alert("Cart has been cleared!");
-                location.reload(); // Reload the page to reflect changes
-            }
+        function completeOrder() {
+            // Example: Gather cart items and prepare data
+            const cartItems = [
+                { product_id: 1, seller_id: 101, order_quantity: 2 }, // Sample data
+                { product_id: 2, seller_id: 102, order_quantity: 1 }
+            ];
+
+            // Placeholder: AJAX call to backend to insert order into the orders table
+            fetch('../actions/order_complete.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    items: cartItems // Pass the cart items to the server
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Order has been completed!');
+                    // Clear cart items (frontend action)
+                    // For example, clear localStorage or session storage, or update the UI
+                    location.reload(); // Reload to reflect the changes
+                } else {
+                    alert('Failed to complete the order.');
+                }
+            })
+            .catch(error => {
+                alert('Error occurred while completing the order.');
+            });
         }
     </script>
 </body>
