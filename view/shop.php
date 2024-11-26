@@ -59,55 +59,43 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
                 <img src="../assets/images/new.jpeg" alt="top-image" width="100%" height="200px" border-radius="5px">
             </div>
             <!-- Seeds Card -->
-            <div id="seeds-card" class="product-card active">
-                <h2>Seeds</h2>
-                <div class="grid">
-                    <div class="item">
-                        <img src="../assets/images/saplin1.jpeg" alt="Seed 1">
-                        <p>Seed 1</p>
-                        <p>$10.00</p>
-                    </div>
-                    <div class="item">
-                        <img src="../assets/images/image.jpg" alt="Seed 2">
-                        <p>Seed 2</p>
-                        <p>$12.00</p>
-                    </div>
-
-                    <div class="item">
-                        <img src="../assets/images/image.jpg" alt="Seed 2">
-                        <p>Seed 3</p>
-                        <p>$19.00</p>
-                    </div>
-
-                    <div class="item">
-                        <img src="../assets/images/image.jpg" alt="Seed 2">
-                        <p>Seed 4</p>
-                        <p>$21.00</p>
-                    </div>
-                    <div class="item">
-                        <img src="../assets/images/image.jpg" alt="Seed 2">
-                        <p>Seed 2</p>
-                        <p>$12.00</p>
-                    </div>
+             <div id="seeds-card" class="product-right active">
+                <h1>Seed Products</h1>
+                <div class="product-grid" id="productGrid">
+                    <!-- Products will be dynamically loaded here -->
                 </div>
             </div>
+
+            
 
             <!-- Saplings Card -->
-            <div id="saplings-card" class="product-card">
-                <h2>Saplings</h2>
-                <div class="grid">
-                    <div class="item">
-                        <img src="https://via.placeholder.com/150" alt="Sapling 1">
-                        <p>Sapling 1</p>
-                        <p>$20.00</p>
-                    </div>
-                    <div class="item">
-                        <img src="https://via.placeholder.com/150" alt="Sapling 2">
-                        <p>Sapling 2</p>
-                        <p>$25.00</p>
-                    </div>
-                </div>
+
+            <div id="saplings-card" class="product-right">
+                <h1>Sapling Products</h1>
+                <!-- <div class="product-grid" id="productGrid">
+                    Products will be dynamically loaded here 
+                </div> -->
+                <div class="product-card">
+                <img src="/Applications/XAMPP/xamppfiles/htdocs/seedlink/actions/../uploads/products/dragonfruit.jpeg" alt="Dragon Fruit Seeds" class="product-image">
+                <h3>Dragon Fruit Seeds</h3>
+                <p>GH₵540.00</p>
+                <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
             </div>
+            </div>
+
+
+            <!-- Product Details Modal --> 
+            <div id="productModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span id="closeModal" class="close">&times;</span>
+                    <img id="modalProductImage" alt="Product Image">
+                    <h2 id="modalProductName"></h2>
+                    <p id="modalProductDescription"></p>
+                    <p><strong>Price:</strong> $<span id="modalProductPrice"></span></p>
+                    <button id="modalAddToCart">Add to Cart</button>
+                </div>
+             </div>
+
         </div>
     </div>
 

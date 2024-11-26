@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             row.innerHTML = `
                 <td>${product.name}</td>
                 <td>${product.category}</td>
-                <td>$${product.price}</td>
+                <td>GH₵${product.price}</td>
                 <td>
                     <button class="view-btn" data-product='${JSON.stringify(product)}'>View</button>
                     <button class="edit-btn" data-product-id="${product.product_id}">Edit</button>
@@ -89,3 +89,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fetch and display products on page load
     fetchProducts();
 });
+

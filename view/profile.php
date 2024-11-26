@@ -9,6 +9,12 @@
 </head>
 
 <body>
+
+<?php
+include "../actions/loginUser.php";
+$name = $_SESSION["fname"]." ".$_SESSION["lname"];
+$email = $_SESSION["email"];
+?>
     <nav class="navbar">
         <div class="logo">Seedlink</div>
         <ul class="nav-links">
@@ -27,8 +33,12 @@
         <div class="profile-container">
             <div class="user-details">
                 <h1>User Profile</h1>
-                <p><strong>Name:</strong> <span id="user-name">John Doe</span></p>
-                <p><strong>Email:</strong> <span id="user-email">johndoe@example.com</span></p>
+                <p><strong>Name:</strong> <span id="user-name">
+                    <?php echo $name?>
+                </span></p>
+                <p><strong>Email:</strong> <span id="user-email">
+                    <?php echo $email?>
+                </span></p>
             </div>
         </div>
 
