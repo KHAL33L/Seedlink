@@ -122,14 +122,15 @@ document.addEventListener("DOMContentLoaded", () => {
         productModal.style.display = "none";
     });
 
-    // Add to cart functionality in modal
-    modalAddToCart.addEventListener("click", () => {
-        alert(`Product ${currentProductId} added to cart!`);
-        // Logic to add product to cart can go here
-    });
+    // // Add to cart functionality in modal
+    // modalAddToCart.addEventListener("click", () => {
+    //     alert(`Product ${currentProductId} added to cart!`);
+    //     // Logic to add product to cart can go here
+    // });
 
     // Fetch and display products on page load
     fetchProducts();
+    fetchFilteredProducts()
 
     
 });
