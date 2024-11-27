@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fetch products by category (saplings)
     const fetchSaplings = async () => {
         try {
-            const response = await fetch("../actions/get_products_by_category.php?category=sapling");
+            const response = await fetch("../actions/getproducts_saplings.php?category=sapling");
             const products = await response.json();
 
             if (products.error) {
