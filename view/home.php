@@ -20,7 +20,8 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
 ?>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">Seedlink</div>
+        <div class="logo">
+        <p>Seedlink</p></div>
         <ul class="nav-links">
             <li><a href="home.php">Home</a></li>
             <li><a href="shop.php">Shop</a></li>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2024 at 12:38 AM
+-- Generation Time: Nov 27, 2024 at 09:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `seedlink`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -93,7 +107,8 @@ INSERT INTO `products` (`product_id`, `seller_id`, `name`, `description`, `price
 (6, 14, 'Mangos', 'These are mangoes', 137.00, '/Applications/XAMPP/xamppfiles/htdocs/seedlink/actions/../uploads/products/mango-seed-6.jpeg', 'seed', '2024-11-26 11:29:53'),
 (7, 14, 'Kiwi Seeds', 'These are Kiwi seeds', 230.00, '/Applications/XAMPP/xamppfiles/htdocs/seedlink/actions/../uploads/products/kiwi_seeds.jpeg', 'seed', '2024-11-26 11:34:43'),
 (8, 14, 'Avocado seeds', 'This is an avocado seed', 74.00, '/Applications/XAMPP/xamppfiles/htdocs/seedlink/actions/../uploads/products/avocado.jpg', 'seed', '2024-11-26 11:35:51'),
-(10, 14, 'Peawi', 'New hybrid breed', 228.00, '/Applications/XAMPP/xamppfiles/htdocs/seedlink/actions/../uploads/products/kiwi_seeds.jpeg', 'sapling', '2024-11-26 22:49:21');
+(10, 14, 'Peawi', 'New hybrid breed', 228.00, '/Applications/XAMPP/xamppfiles/htdocs/seedlink/actions/../uploads/products/kiwi_seeds.jpeg', 'sapling', '2024-11-26 22:49:21'),
+(11, 14, 'Dragon Fruit Seeds', 'New fruit in town', 32.00, '../uploads/products/avocado.jpg', 'seed', '2024-11-27 01:25:38');
 
 -- --------------------------------------------------------
 
@@ -108,20 +123,30 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `is_seller` tinyint(1) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `number` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `fname`, `lname`, `email`, `password`, `is_seller`, `created_at`) VALUES
-(14, 'Tawiah', 'Narh', 'tnarh@narh.com', '$2y$10$2ny7U8uMiMXDiKAZTvGSO.sogaLd3wTJWiZWacEIC7FCZJdfkd2HS', 0, '2024-11-25 20:17:54'),
-(15, 'Samuel', 'Inkoom', 'samuelninson@gmail.com', '$2y$10$FSYqTEBfCALMM.ECHCJJrum5r9sD3tapOn0CkrpxYsE088SwKr1YC', 0, '2024-11-26 09:22:32');
+INSERT INTO `users` (`user_id`, `fname`, `lname`, `email`, `password`, `is_seller`, `created_at`, `number`) VALUES
+(14, 'Tawiah', 'Narh', 'tnarh@narh.com', '$2y$10$2ny7U8uMiMXDiKAZTvGSO.sogaLd3wTJWiZWacEIC7FCZJdfkd2HS', 0, '2024-11-25 20:17:54', '0505865082'),
+(15, 'Samuel', 'Inkoom', 'samuelninson@gmail.com', '$2y$10$FSYqTEBfCALMM.ECHCJJrum5r9sD3tapOn0CkrpxYsE088SwKr1YC', 0, '2024-11-26 09:22:32', '0567899344'),
+(16, 'Kwame', 'Osei', 'kosei@new.co', '$2y$10$45/ZV14UxOS95HMxobfNqObljcX2OTKM0yvno1vgU/g8fC94.jcuu', 0, '2024-11-27 07:36:17', '0123456789');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `orders`
@@ -164,6 +189,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -185,17 +216,24 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_product_fk` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cart_user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`

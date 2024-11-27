@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalProductName.textContent = product.name;
         modalProductDescription.textContent = product.description || "No description available.";
         modalProductPrice.textContent = product.price;
-        productModal.style.display = "block";
+        productModal.style.display = "flex";
     };
 
     // Close modal

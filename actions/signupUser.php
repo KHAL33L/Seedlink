@@ -4,32 +4,31 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-try {
-    include '../db/db.php';
+include '../db/db.php';
 
+try {
     $database = new Database();
-    $pdo = $database->getDatabaseConnection();
+    $conn = $database->getConnection();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Sanitize user inputs
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $email = $_POST["email"];
-        $number = $_POST["number"];
-        $password = $_POST["password"];
+        $fname = $conn->real_escape_string($_POST["fname"]);
+        $lname = $conn->real_escape_string($_POST["lname"]);
+        $email = $conn->real_escape_string($_POST["email"]);
+        $number = $conn->real_escape_string($_POST["number"]);
+        $password = $_POST["password"]; // Password will be hashed, no need to escape
 
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Prepare the SQL query
-        $stmt = $pdo->prepare("INSERT INTO users (fname, lname, email, number, password) VALUES (:fname, :lname, :email, :number, :password)");
+        $stmt = $conn->prepare("INSERT INTO users (fname, lname, email, password, number) VALUES (?, ?, ?, ?,?)");
+        if ($stmt === false) {
+            die("Prepare failed: " . $conn->error);
+        }
 
         // Bind parameters to the placeholders
-        $stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
-        $stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':number', $number, PDO::PARAM_STR);
-        $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+        $stmt->bind_param("sssss", $fname, $lname, $email, $hashedPassword, $number);
 
         // Execute the query
         if ($stmt->execute()) {
@@ -37,10 +36,12 @@ try {
             header("Location: ../view/login.php");
             exit();
         } else {
-            echo "Error: Could not execute the query.";
+            echo "Error: Could not execute the query. " . $stmt->error;
         }
+
+        $stmt->close(); // Close the statement
     }
-} catch (PDOException $e) {
+} catch (Exception $e) {
     die("Database error: " . $e->getMessage());
 }
 ?>

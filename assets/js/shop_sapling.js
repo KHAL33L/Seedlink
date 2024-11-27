@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
             productCard.innerHTML = `
                 <img src="${product.image_url}" alt="${product.name}" class="product-image">
                 <h3>${product.name}</h3>
-                <p>$${product.price}</p>
+                <p>GH₵${product.price}</p>
                 <button class="add-to-cart-btn" data-product-id="${product.product_id}">Add to Cart</button>
             `;
 

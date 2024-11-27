@@ -11,9 +11,11 @@
 <body>
 
 <?php
+
 include "../actions/loginUser.php";
 $name = $_SESSION["fname"]." ".$_SESSION["lname"];
 $email = $_SESSION["email"];
+
 ?>
     <nav class="navbar">
         <div class="logo">Seedlink</div>
@@ -36,8 +38,11 @@ $email = $_SESSION["email"];
                 <p><strong>Name:</strong> <span id="user-name">
                     <?php echo $name?>
                 </span></p>
-                <p><strong>Email:</strong> <span id="user-email">
-                    <?php echo $email?>
+                <p><strong>Email:
+                    <?php echo $_SESSION["email"]?></strong>
+                </p>
+                <p><strong>Phone  Number: </strong><span>
+                    <?php echo $_SESSION["number"]?>
                 </span></p>
             </div>
         </div>
@@ -45,7 +50,7 @@ $email = $_SESSION["email"];
         <!-- Products Overview Container -->
         <div class="products-container">
             <div class="products-overview">
-                <p><strong>Total Products:</strong> <span id="total-products">5</span></p>
+                <!-- <p><strong>Total Products:</strong> <span id="total-products">5</span></p> -->
                 <button id="add-product-btn" class="add-product-btn">Add New Product</button>
                 <a href="../actions/logoutUser.php"><button id="add-product-btn" class="add-product-btn">Log Out</button></a>
             </div>

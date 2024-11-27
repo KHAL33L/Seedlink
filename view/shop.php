@@ -53,9 +53,9 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
         <!-- Right Panel -->
         <div class="right-panel">
 
-            <div class="top-img">
-                <img src="../assets/images/new.jpeg" alt="top-image" width="100%" height="200px" border-radius="5px">
-            </div>
+            <!-- <div class="top-img">
+                <img src="../assets/images/top-image.jpg" alt="top-image" width="80%" height="300px" border-radius="5px" style="justify-content: center">
+            </div> -->
             <!-- Seeds Card -->
              <div id="seeds-card" class="product-right active">
                 <h1>Seed Products</h1>

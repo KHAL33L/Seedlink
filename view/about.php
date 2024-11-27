@@ -43,7 +43,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
             <div class="about-content">
                 <h1 class="about-title">About Seedlink</h1>
                 <p class="about-description">
-                    AgriBridge is a pioneering platform that brings together farmers in a unified digital ecosystem. We've created a 
+                    Seedlink is a pioneering platform that brings together farmers in a unified digital ecosystem. We've created a 
                     space where agricultural innovation meets community spirit, enabling farmers to both trade and learn from each other. 
                     Our marketplace specializes in seeds and saplings of all varieties, while our knowledge-sharing platform allows 
                     experienced farmers to share their expertise and discuss trending agricultural topics. By bridging the gap between 
