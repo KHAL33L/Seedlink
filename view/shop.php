@@ -53,9 +53,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
         <!-- Right Panel -->
         <div class="right-panel">
 
-            <!-- <div class="top-img">
-                <img src="../assets/images/top-image.jpg" alt="top-image" width="80%" height="300px" border-radius="5px" style="justify-content: center">
-            </div> -->
+           
             <!-- Seeds Card -->
              <div id="seeds-card" class="product-right active">
                 <h1>Seed Products</h1>
@@ -84,9 +82,10 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
                     <h2 id="modalProductName"></h2>
                     <p id="modalProductDescription"></p>
                     <p><strong>Price:</strong> $<span id="modalProductPrice"></span></p>
-                    <label for="productQuantity">Quantity:</label>
+                    <p></p>
+                    <!-- <label for="productQuantity">Quantity:</label>
                     <input type="number" id="productQuantity" min="1" value="1">
-                    <button id="modalAddToCart">Add to Cart</button>
+                    <button id="modalAddToCart">Add to Cart</button> -->
                 </div>
              </div>
 
