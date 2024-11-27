@@ -1,7 +1,7 @@
 <?php
 // File: actions/add_to_cart.php
 session_start();
-require_once '../config/database.php';
+require_once '../db/db.php';
 
 // // Check if user is logged in
 // if (!isset($_SESSION['user_id'])) {
