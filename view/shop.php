@@ -100,5 +100,6 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
 
     <script src="../assets/js/shop.js"></script>
     <script src="../assets/js/shop_sapling.js"></script>
+    <script src="../assets/js/add_to_cart.js"></script>
 </body>
 </html>
