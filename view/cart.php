@@ -12,7 +12,7 @@
 session_start();
 
 // // Check if the user is logged in
-// $isLoggedIn = isset($_SESSION['user_id']);
+$isLoggedIn = isset($_SESSION['user_id']);
 
 // // If not logged in, redirect to login page
 // if (!$isLoggedIn) {

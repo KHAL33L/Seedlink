@@ -1,9 +1,9 @@
 <?php
 // File: actions/add_to_cart.php
 session_start();
-require_once '../config/database.php';
+require_once '../db/db.php'; // Include the Database class
 
-// // Check if user is logged in
+// Check if user is logged in
 // if (!isset($_SESSION['user_id'])) {
 //     echo json_encode(['success' => false, 'message' => 'Please log in first']);
 //     exit();
@@ -16,32 +16,45 @@ $quantity = $data['quantity'] ?? 1;
 $user_id = $_SESSION['user_id'];
 
 try {
+    // Create a new database instance and get connection
+    $database = new Database();
+    $conn = $database->getConnection();
+
     // Check if product exists
-    $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
-    $stmt->execute([$product_id]);
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $product = $result->fetch_assoc();
 
     if (!$product) {
         echo json_encode(['success' => false, 'message' => 'Product not found']);
         exit();
     }
 
-    // Check if product is already in cart
-    $stmt = $pdo->prepare("SELECT * FROM cart WHERE user_id = ? AND product_id = ?");
-    $stmt->execute([$user_id, $product_id]);
-    $existing_cart_item = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Check if product is already in the cart
+    $stmt = $conn->prepare("SELECT * FROM cart WHERE user_id = ? AND product_id = ?");
+    $stmt->bind_param("ii", $user_id, $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $existing_cart_item = $result->fetch_assoc();
 
     if ($existing_cart_item) {
         // Update quantity if product already in cart
-        $stmt = $pdo->prepare("UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND product_id = ?");
-        $stmt->execute([$quantity, $user_id, $product_id]);
+        $stmt = $conn->prepare("UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND product_id = ?");
+        $stmt->bind_param("iii", $quantity, $user_id, $product_id);
+        $stmt->execute();
     } else {
         // Insert new cart item
-        $stmt = $pdo->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)");
-        $stmt->execute([$user_id, $product_id, $quantity]);
+        $stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)");
+        $stmt->bind_param("iii", $user_id, $product_id, $quantity);
+        $stmt->execute();
     }
 
     echo json_encode(['success' => true, 'message' => 'Product added to cart']);
-} catch (PDOException $e) {
+    $stmt->close(); // Close statement
+    $conn->close(); // Close connection
+} catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
 }
+?>

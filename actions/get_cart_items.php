@@ -12,8 +12,12 @@ require_once '../db/db.php';
 $user_id = $_SESSION['user_id'];
 
 try {
+    // Create a new database instance and get the connection
+    $database = new Database();
+    $conn = $database->getConnection();
+
     // Fetch cart items with product details
-    $stmt = $pdo->prepare("
+    $stmt = $conn->prepare("
         SELECT 
             c.cart_id, 
             c.quantity, 
@@ -25,21 +29,31 @@ try {
         JOIN products p ON c.product_id = p.product_id
         WHERE c.user_id = ?
     ");
-    $stmt->execute([$user_id]);
-    $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $cart_items = [];
+    while ($row = $result->fetch_assoc()) {
+        $cart_items[] = $row;
+    }
 
     // Calculate total
     $total_items = array_sum(array_column($cart_items, 'quantity'));
-    $total_cost = array_reduce($cart_items, function($carry, $item) {
+    $total_cost = array_reduce($cart_items, function ($carry, $item) {
         return $carry + ($item['price'] * $item['quantity']);
     }, 0);
 
     echo json_encode([
-        'success' => true, 
+        'success' => true,
         'cart_items' => $cart_items,
         'total_items' => $total_items,
         'total_cost' => number_format($total_cost, 2)
     ]);
-} catch (PDOException $e) {
+
+    $stmt->close(); // Close the statement
+    $conn->close(); // Close the connection
+} catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
 }
+?>
