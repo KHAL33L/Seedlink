@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalProductDescription.textContent = product.description || "No description available.";
         modalProductPrice.textContent = product.price;
         modalProductQuantity.value = 1; // Reset quantity to 1
-        document.getElementById("productModal").style.display = "block";
+        document.getElementById("productModal").style.display = "flex";
     };
 
     // Add product to the cart with quantity
