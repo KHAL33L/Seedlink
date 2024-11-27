@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalProductDescription = document.getElementById("modalProductDescription");
     const modalProductPrice = document.getElementById("modalProductPrice");
     const modalAddToCart = document.getElementById("modalAddToCart");
+    const sellerPhone = document.getElementById("sellerPhone");
+
 
     let currentProductId = null;
 
@@ -122,11 +124,33 @@ document.addEventListener("DOMContentLoaded", () => {
         productModal.style.display = "none";
     });
 
-    // // Add to cart functionality in modal
-    // modalAddToCart.addEventListener("click", () => {
-    //     alert(`Product ${currentProductId} added to cart!`);
-    //     // Logic to add product to cart can go here
-    // });
+    const fetchSellerPhone = async (productId) => {
+        try {
+            const response = await fetch(`../../actions/get_seller.php?product_id=${productId}`);
+            const data = await response.json();
+
+            if (data.success) {
+                sellerPhone.textContent = data.number; // Update the modal with the phone number
+            } else {
+                sellerPhone.textContent = "No phone number available.";
+            }
+        } catch (error) {
+            console.error("Error fetching seller phone:", error);
+            sellerPhone.textContent = "Error fetching phone number.";
+        }
+    };
+
+    const openModal = (productId) => {
+        // Reset modal content
+        sellerPhone.textContent = "Loading...";
+    
+        // Fetch seller's phone number
+        fetchSellerPhone(productId);
+    
+        // Display the modal
+        productModal.style.display = "block";
+    };
+    
 
     // Fetch and display products on page load
     fetchProducts();
