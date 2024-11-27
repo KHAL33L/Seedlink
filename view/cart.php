@@ -11,8 +11,14 @@
 <?php
 session_start();
 
-// Check if the user is logged in
-$isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your session key
+// // Check if the user is logged in
+// $isLoggedIn = isset($_SESSION['user_id']);
+
+// // If not logged in, redirect to login page
+// if (!$isLoggedIn) {
+//     header("Location: login.php");
+//     exit();
+// }
 ?>
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -55,28 +61,7 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
                     </tr>
                 </thead>
                 <tbody id="cartTableBody">
-                    <tr>
-                        <td>1</td>
-                        <td>Tomato Seeds</td>
-                        <td>$5.00</td>
-                        <td>2</td>
-                        <td>$10.00</td>
-                        <td>+233 24 123 4567</td>
-                        <td>
-                            <button class="remove-btn">Remove</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Mango Sapling</td>
-                        <td>$15.00</td>
-                        <td>1</td>
-                        <td>$15.00</td>
-                        <td>+233 55 987 6543</td>
-                        <td>
-                            <button class="remove-btn">Remove</button>
-                        </td>
-                    </tr>
+                    <!-- Cart items will be dynamically loaded here -->
                 </tbody>
             </table>
         </div>
@@ -84,9 +69,8 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
         <!-- Cart Summary -->
         <div class="products-container">
             <h2>Cart Summary</h2>
-            <p>Total Items: 3</p>
-            <p>Total Cost: $25.00</p>
-            <!-- Changed "Clear Cart" to "Order Complete" -->
+            <p>Total Items: <span id="totalItems">0</span></p>
+            <p>Total Cost: $<span id="totalCost">0.00</span></p>
             <button class="submit-btn" onclick="completeOrder()">Order Complete</button>
         </div>
     </div>
@@ -103,38 +87,106 @@ $isLoggedIn = isset($_SESSION['user_id']); // Replace 'user_id' with your sessio
         </div>
     </footer>
 
-    <!-- JavaScript for Completing the Order -->
+    <!-- JavaScript for Cart Management -->
     <script>
-        function completeOrder() {
-            // Example: Gather cart items and prepare data
-            const cartItems = [
-                { product_id: 1, seller_id: 101, order_quantity: 2 }, // Sample data
-                { product_id: 2, seller_id: 102, order_quantity: 1 }
-            ];
+        // Fetch cart items when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchCartItems();
+        });
 
-            // Placeholder: AJAX call to backend to insert order into the orders table
-            fetch('../actions/order_complete.php', {
+        function fetchCartItems() {
+            fetch('../actions/get_cart_items.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const cartTableBody = document.getElementById('cartTableBody');
+                    cartTableBody.innerHTML = ''; // Clear existing rows
+
+                    data.cart_items.forEach((item, index) => {
+                        const row = `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${item.name}</td>
+                                <td>$${parseFloat(item.price).toFixed(2)}</td>
+                                <td>${item.quantity}</td>
+                                <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                                <td>N/A</td>
+                                <td>
+                                    <button class="remove-btn" onclick="removeCartItem(${item.cart_id})">Remove</button>
+                                </td>
+                            </tr>
+                        `;
+                        cartTableBody.innerHTML += row;
+                    });
+
+                    // Update summary
+                    document.getElementById('totalItems').textContent = data.total_items;
+                    document.getElementById('totalCost').textContent = data.total_cost;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to load cart items');
+            });
+        }
+
+        function removeCartItem(cartId) {
+            fetch('../actions/remove_cart_item.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    items: cartItems // Pass the cart items to the server
-                })
+                body: JSON.stringify({ cart_id: cartId })
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Order has been completed!');
-                    // Clear cart items (frontend action)
-                    // For example, clear localStorage or session storage, or update the UI
-                    location.reload(); // Reload to reflect the changes
+                    fetchCartItems(); // Reload cart items
                 } else {
-                    alert('Failed to complete the order.');
+                    alert(data.message);
                 }
             })
             .catch(error => {
-                alert('Error occurred while completing the order.');
+                console.error('Error:', error);
+                alert('Failed to remove item from cart');
+            });
+        }
+
+        function completeOrder() {
+            // Fetch cart items to prepare for order
+            fetch('../actions/get_cart_items.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.cart_items.length > 0) {
+                    const cartItems = data.cart_items.map(item => ({
+                        product_id: item.product_id,
+                        quantity: item.quantity
+                    }));
+
+                    // Send order to backend
+                    return fetch('../actions/order_complete.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ items: cartItems })
+                    });
+                } else {
+                    throw new Error('Cart is empty');
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Order completed successfully!');
+                    fetchCartItems(); // Reload to show empty cart
+                } else {
+                    alert('Failed to complete order: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while completing the order');
             });
         }
     </script>

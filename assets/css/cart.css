@@ -37,13 +37,13 @@ body {
 }
 
 .nav-links a {
-    text-decoration: none; /* Remove underline */
-    color: white; /* Set text color to white */
+    text-decoration: none;
+    color: white;
     font-size: 16px;
 }
 
 .nav-links a:hover {
-    color: #4CAF50; /* Green on hover */
+    color: #4CAF50;
 }
 
 /* Content Wrapper */
@@ -73,7 +73,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 25px;
-    max-width: 1600px; /* Increased width for the products container */
+    max-width: 1600px;
 }
 
 .products-container h2 {
@@ -81,9 +81,17 @@ body {
     margin-bottom: 15px;
 }
 
+/* Empty Cart Styles */
+.empty-cart {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 20px;
+    color: #aaa;
+}
+
 /* Cart Table */
 table {
-    width: 100%; /* Set to 100% for full width */
+    width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
     margin-top: 20px;
@@ -105,7 +113,7 @@ th {
 td {
     background-color: #2f2d2d;
     color: white;
-    text-align: center; /* Center text in all cells */
+    text-align: center;
 }
 
 tr:nth-child(even) {
@@ -124,29 +132,29 @@ td:first-child {
 
 th:nth-child(2),
 td:nth-child(2) {
-    width: 30%; /* Widen the "Item" column */
-    text-align: left; /* Left-align the "Item" column */
+    width: 30%;
+    text-align: left;
 }
 
 th:nth-child(3),
 td:nth-child(3) {
-    width: 15%; /* Set width for "Price" */
+    width: 15%;
 }
 
 th:nth-child(4),
 td:nth-child(4) {
-    width: 15%; /* Set width for "Quantity" */
+    width: 15%;
 }
 
 th:nth-child(5),
 td:nth-child(5) {
-    width: 15%; /* Set width for "Total" */
+    width: 15%;
 }
 
 th:nth-child(6),
 td:nth-child(6) {
-    width: 20%; /* Set width for "Contact" */
-    text-align: left; /* Left-align phone numbers */
+    width: 20%;
+    text-align: left;
 }
 
 /* Buttons */
@@ -158,6 +166,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -165,11 +174,11 @@ button:hover {
 }
 
 .remove-btn {
-    background-color: #5ca532;
+    background-color: #db3230;
 }
 
 .remove-btn:hover {
-    background-color: #db3230;
+    background-color: #a22420;
 }
 
 .submit-btn {
@@ -181,6 +190,11 @@ button:hover {
 
 .submit-btn:hover {
     background-color: #3d9540; 
+}
+
+.submit-btn:disabled {
+    background-color: #888;
+    cursor: not-allowed;
 }
 
 /* Footer */
