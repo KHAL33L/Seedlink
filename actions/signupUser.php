@@ -15,18 +15,20 @@ try {
         $fname = $_POST["fname"];
         $lname = $_POST["lname"];
         $email = $_POST["email"];
+        $number = $_POST["number"];
         $password = $_POST["password"];
 
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Prepare the SQL query
-        $stmt = $pdo->prepare("INSERT INTO users (fname, lname, email, password) VALUES (:fname, :lname, :email, :password)");
+        $stmt = $pdo->prepare("INSERT INTO users (fname, lname, email, number, password) VALUES (:fname, :lname, :email, :number, :password)");
 
         // Bind parameters to the placeholders
         $stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
         $stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':number', $number, PDO::PARAM_STR);
         $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
 
         // Execute the query

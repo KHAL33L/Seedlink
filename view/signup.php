@@ -27,6 +27,9 @@
                     <input type="email" name="email" id="email" placeholder="E-mail...">
                 </div>
                 <div class="input-box">
+                    <input type="number" name="number" id="number" placeholder="Phone number...">
+                </div>
+                <div class="input-box">
                     <input type="password" name="password" id="password" placeholder="Password...">
                 </div>
 

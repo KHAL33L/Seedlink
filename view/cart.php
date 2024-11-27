@@ -30,7 +30,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         </ul>
         <div class="nav-icons">
             <ul>
-                <a href="cart.php">🛒+</a>
+                <!-- <a href="cart.php">🛒+</a> -->
                 <?php if ($isLoggedIn): ?>
                     <a href="profile.php">Profile</a>
                     <a href="../actions/logoutUser.php">Logout</a>
