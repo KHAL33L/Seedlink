@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="../assets/css/cart.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Seedlink</div>
+        <ul class="nav-links">
+            <li><a href="home.php">Home</a></li>
+            <li><a href="shop.php">Shop</a></li>
+            <li><a href="about.php">About</a></li>
+    
+        </ul>
+        <div class="nav-icons">
+            <ul>
+            <a href="#cart">🛒+</a>
+            <?php if ($isLoggedIn): ?>
+                    <a href="profile.php">Profile</a>
+                    <a href="../actions/logoutUser.php">Logout</a>
+            <?php else: ?>
+                <a href="login.html">Login</a>
+            <?php endif; ?>
+            </ul>
+            <!-- <a href="profile.html">Profile</a> -->
+        </div>
+    </nav>
+
+    <!-- Cart Container -->
+    <div class="profile-page">
+        <div class="profile-container">
+            <h1>Your Cart</h1>
+            <p>Review your items before proceeding to checkout.</p>
+        </div>
+        <div class="products-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tomato Seeds</td>
+                        <td>$5.00</td>
+                        <td>2</td>
+                        <td>$10.00</td>
+                        <td>
+                            <button class="remove-btn">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mango Sapling</td>
+                        <td>$15.00</td>
+                        <td>1</td>
+                        <td>$15.00</td>
+                        <td>
+                            <button class="remove-btn">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="products-container">
+            <h2>Cart Summary</h2>
+            <p>Total Items: 3</p>
+            <p>Total Cost: $25.00</p>
+            <button class="submit-btn" onclick="location.href='payment.html'">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Seedlink. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="about.php">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
