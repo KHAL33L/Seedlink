@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const productId = addToCartButton.dataset.productId;
         const quantity = parseInt(document.getElementById("productQuantity").value);
 
-        if (!productId || quantity <= 0) {
+        if (quantity <= 0) {
             alert("Invalid product or quantity.");
             return;
         }

@@ -25,29 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Add product to the cart with quantity
-    modalAddToCart.addEventListener("click", () => {
-        const quantity = parseInt(modalProductQuantity.value);
+    // modalAddToCart.addEventListener("click", () => {
+    //     const quantity = parseInt(modalProductQuantity.value);
 
-        // Check if product already exists in the cart
-        const existingProductIndex = cart.findIndex((item) => item.product_id === currentProduct.product_id);
-        if (existingProductIndex > -1) {
-            // Update quantity if product exists
-            cart[existingProductIndex].quantity += quantity;
-        } else {
-            // Add new product to the cart
-            cart.push({
-                product_id: currentProduct.product_id,
-                name: currentProduct.name,
-                price: currentProduct.price,
-                quantity: quantity,
-                image_url: currentProduct.image_url,
-            });
-        }
+    //     // Check if product already exists in the cart
+    //     const existingProductIndex = cart.findIndex((item) => item.product_id === currentProduct.product_id);
+    //     if (existingProductIndex > -1) {
+    //         // Update quantity if product exists
+    //         cart[existingProductIndex].quantity += quantity;
+    //     } else {
+    //         // Add new product to the cart
+    //         cart.push({
+    //             product_id: currentProduct.product_id,
+    //             name: currentProduct.name,
+    //             price: currentProduct.price,
+    //             quantity: quantity,
+    //             image_url: currentProduct.image_url,
+    //         });
+    //     }
 
-        localStorage.setItem("cart", JSON.stringify(cart)); // Save cart to localStorage
-        alert(`${currentProduct.name} added to cart!`);
-        document.getElementById("productModal").style.display = "none"; // Close modal
-    });
+    //     localStorage.setItem("cart", JSON.stringify(cart)); // Save cart to localStorage
+    //     alert(`${currentProduct.name} added to cart!`);
+    //     document.getElementById("productModal").style.display = "none"; // Close modal
+    // });
 
     // Fetch products by category (saplings)
     const fetchSaplings = async () => {
@@ -96,11 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
         productModal.style.display = "none";
     });
 
-    // Add to cart functionality in modal
-    modalAddToCart.addEventListener("click", () => {
-        alert(`Product ${currentProductId} added to cart!`);
-        // Logic to add product to cart can go here
-    });
+    // // Add to cart functionality in modal
+    // modalAddToCart.addEventListener("click", () => {
+    //     alert(`Product ${currentProductId} added to cart!`);
+    //     // Logic to add product to cart can go here
+    // });
 
     // Fetch and display saplings on page load
     fetchSaplings();
